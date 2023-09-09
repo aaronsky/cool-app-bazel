@@ -1,0 +1,52 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcodeproj")
+
+apple_bundle_version(
+    name = "version",
+    build_version = "0.1.0",
+    short_version_string = "0.1",
+)
+
+ios_application(
+    name = "CoolApp",
+    app_icons = glob(["src/Assets.xcassets/AppIcon.appiconset/**"]),
+    bundle_id = "com.sky.CoolApp",
+    bundle_name = "CoolApp",
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["src/Info.plist"],
+    minimum_os_version = "17.0",
+    resources = glob(
+        ["src/Assets.xcassets/**"],
+        exclude = ["src/Assets.xcassets/AppIcon.appiconset/**"],
+    ),
+    strings = glob(["src/*.lproj/Localizable.strings"]),
+    version = ":version",
+    visibility = [
+        "@rules_xcodeproj//xcodeproj:generated",
+    ],
+    deps = [
+        ":CoolAppLibrary",
+    ],
+)
+
+swift_library(
+    name = "CoolAppLibrary",
+    srcs = glob(["src/**/*.swift"]),
+    module_name = "CoolApp",
+    deps = [
+        "//ios/root_view",
+        "@firebase//:FirebaseAnalyticsSwift",
+    ],
+)
+
+xcodeproj(
+    name = "xcodeproj",
+    build_mode = "bazel",
+    project_name = "CoolApp",
+    top_level_targets = ["CoolApp"],
+)

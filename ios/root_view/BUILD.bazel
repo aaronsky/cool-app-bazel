@@ -1,0 +1,16 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+
+swift_library(
+    name = "root_view",
+    srcs = glob(["src/**/*.swift"]),
+    module_name = "ios_root_view",
+    visibility = ["//ios/app:__subpackages__"],
+    deps = [],
+)
+
+ios_unit_test(
+    name = "root_view_tests",
+    deps = [":root_view"],
+    minimum_os_version = "17.0"
+)

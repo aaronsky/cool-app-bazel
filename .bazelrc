@@ -1,0 +1,4 @@
+common --enable_bzlmod
+
+# Use a user.bazelrc if it exists
+try-import %workspace%/user.bazelrc

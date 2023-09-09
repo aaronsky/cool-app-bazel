@@ -1,0 +1,505 @@
+"""
+define Firebase frameworks
+"""
+
+load("@build_bazel_rules_apple//apple:apple.bzl", "apple_static_xcframework_import")
+load("@build_bazel_rules_apple//apple:resources.bzl", "apple_bundle_import")
+
+#
+# FirebaseABTesting
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseABTesting",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseABTesting/FirebaseABTesting.xcframework/**"]),
+    deps = [":FirebaseAnalytics"],
+)
+
+#
+# FirebaseAnalytics
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseAnalyticsSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FirebaseAnalyticsSwift.xcframework/**"]),
+    deps = [":FirebaseAnalytics"],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseAnalytics",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FirebaseAnalytics.xcframework/**"]),
+    deps = [
+        ":FBLPromises",
+        ":FirebaseCore",
+        ":FirebaseCoreInternal",
+        ":FirebaseInstallations",
+        ":GoogleAppMeasurement",
+        ":GoogleUtilities",
+        ":nanopb",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FBLPromises",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FBLPromises.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseCore",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FirebaseCore.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseCoreInternal",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FirebaseCoreInternal.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseInstallations",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/FirebaseInstallations.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "GoogleAppMeasurement",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/GoogleAppMeasurement.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "GoogleAppMeasurementIdentitySupport",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/GoogleAppMeasurementIdentitySupport.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "GoogleUtilities",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/GoogleUtilities.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "nanopb",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalytics/nanopb.xcframework/**"]),
+)
+
+#
+# FirebaseAnalyticsOnDeviceConversion
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseAnalyticsOnDeviceConversion",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalyticsOnDeviceConversion/FirebaseAnalyticsOnDeviceConversion.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":GoogleAppMeasurementOnDeviceConversion",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "GoogleAppMeasurementOnDeviceConversion",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAnalyticsOnDeviceConversion/GoogleAppMeasurementOnDeviceConversion.xcframework/**"]),
+)
+
+#
+# FirebaseAppCheck
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseAppCheck",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAppCheck/FirebaseAppCheck.xcframework/**"]),
+    deps = [":FirebaseAnalytics"],
+)
+
+#
+# FirebaseAppDistribution
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseAppDistribution",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAppDistribution/FirebaseAppDistribution.xcframework/**"]),
+    deps = [":FirebaseAnalytics"],
+)
+
+#
+# FirebaseAuth
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseAuth",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAuth/FirebaseAuth.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":FirebaseAppCheckInterop",
+        ":GTMSessionFetcher",
+        ":RecaptchaInterop",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseAppCheckInterop",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAuth/FirebaseAppCheckInterop.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "GTMSessionFetcher",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAuth/GTMSessionFetcher.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "RecaptchaInterop",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseAuth/RecaptchaInterop.xcframework/**"]),
+)
+
+#
+# FirebaseCrashlytics
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseCrashlytics",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseCrashlytics/FirebaseCrashlytics.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":FirebaseCoreExtension",
+        ":FirebaseSessions",
+        ":GoogleDataTransport",
+        ":PromisesSwift",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseCoreExtension",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseCrashlytics/FirebaseCoreExtension.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseSessions",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseCrashlytics/FirebaseSessions.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "GoogleDataTransport",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseCrashlytics/GoogleDataTransport.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "PromisesSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseCrashlytics/PromisesSwift.xcframework/**"]),
+)
+
+#
+# FirebaseDatabase
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseDatabase",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseDatabase/FirebaseDatabase.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":FirebaseDatabaseSwift",
+        ":FirebaseSharedSwift",
+        ":leveldb_library",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseDatabaseSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseDatabase/FirebaseDatabaseSwift.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseSharedSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseDatabase/FirebaseSharedSwift.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "leveldb_library",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseDatabase/leveldb-library.xcframework/**"]),
+)
+
+#
+# FirebaseDynamicLinks
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseDynamicLinks",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseDynamicLinks/FirebaseDynamicLinks.xcframework/**"]),
+    deps = [":FirebaseAnalytics"],
+)
+
+#
+# FirebaseFirestore
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseFirestore",
+    data = [":gRPCCertificatesBundle"],
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/FirebaseFirestore.xcframework/**"]),
+    deps = [
+        ":BoringSSL_GRPC",
+        ":FirebaseAnalytics",
+        ":FirebaseCoreExtension",
+        ":FirebaseFirestoreSwift",
+        ":FirebaseSharedSwift",
+        ":abseil",
+        ":gRPC_C++",
+        ":gRPC_Core",
+        ":leveldb_library",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "BoringSSL_GRPC",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/BoringSSL-GRPC.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseFirestoreSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/FirebaseFirestoreSwift.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "abseil",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/abseil.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "gRPC_C++",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/gRPC_C++.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "gRPC_Core",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFirestore/gRPC_Core.xcframework/**"]),
+)
+
+apple_bundle_import(
+    name = "gRPCCertificatesBundle",
+    bundle_imports = glob(["FirebaseFirestore/Resources/gRPCCertificates-Cpp.bundle/**"]),
+    visibility = ["//visibility:public"],
+)
+
+#
+# FirebaseFunctions
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseFunctions",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFunctions/FirebaseFunctions.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":FirebaseAppCheckInterop",
+        ":FirebaseAuthInterop",
+        ":FirebaseCoreExtension",
+        ":FirebaseMessagingInterop",
+        ":FirebaseSharedSwift",
+        ":GTMSessionFetcher",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseAuthInterop",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFunctions/FirebaseAuthInterop.xcframework/**"]),
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseMessagingInterop",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseFunctions/FirebaseMessagingInterop.xcframework/**"]),
+)
+
+#
+# FirebaseInAppMessaging
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseInAppMessaging",
+    data = [":InAppMessagingDisplayResourcesBundle"],
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseInAppMessaging/FirebaseInAppMessaging.xcframework/**"]),
+    deps = [
+        ":FirebaseABTesting",
+        ":FirebaseAnalytics",
+        ":FirebaseInAppMessagingSwift",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseInAppMessagingSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseInAppMessaging/FirebaseInAppMessagingSwift.xcframework/**"]),
+)
+
+apple_bundle_import(
+    name = "InAppMessagingDisplayResourcesBundle",
+    bundle_imports = glob(["FirebaseInAppMessaging/Resources/InAppMessagingDisplayResources.bundle/**"]),
+    visibility = ["//visibility:public"],
+)
+
+#
+# FirebaseMLModelDownloader
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseMLModelDownloader",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseMLModelDownloader/FirebaseMLModelDownloader.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":GoogleDataTransport",
+        ":SwiftProtobuf",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "SwiftProtobuf",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseMLModelDownloader/SwiftProtobuf.xcframework/**"]),
+)
+
+#
+# FirebaseMessaging
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseMessaging",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseMessaging/FirebaseMessaging.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":GoogleDataTransport",
+    ],
+)
+
+#
+# FirebasePerformance
+#
+
+apple_static_xcframework_import(
+    name = "FirebasePerformance",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebasePerformance/FirebasePerformance.xcframework/**"]),
+    deps = [
+        ":FirebaseABTesting",
+        ":FirebaseAnalytics",
+        ":FirebaseCoreExtension",
+        ":FirebaseRemoteConfig",
+        ":FirebaseSessions",
+        ":GoogleDataTransport",
+        ":PromisesSwift",
+    ],
+)
+
+#
+# FirebaseRemoteConfig
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseRemoteConfig",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseRemoteConfig/FirebaseRemoteConfig.xcframework/**"]),
+    deps = [
+        ":FirebaseABTesting",
+        ":FirebaseAnalytics",
+        ":FirebaseRemoteConfigSwift",
+        ":FirebaseSharedSwift",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "FirebaseRemoteConfigSwift",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseRemoteConfig/FirebaseRemoteConfigSwift.xcframework/**"]),
+)
+
+#
+# FirebaseStorage
+#
+
+apple_static_xcframework_import(
+    name = "FirebaseStorage",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["FirebaseStorage/FirebaseStorage.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":FirebaseAppCheckInterop",
+        ":FirebaseAuthInterop",
+        ":FirebaseCoreExtension",
+        ":GTMSessionFetcher",
+    ],
+)
+
+#
+# Google-Mobile-Ads-SDK
+#
+
+apple_static_xcframework_import(
+    name = "GoogleMobileAds",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["Google-Mobile-Ads-SDK/GoogleMobileAds.xcframework/**"]),
+    deps = [
+        ":FirebaseAnalytics",
+        ":UserMessagingPlatform",
+    ],
+)
+
+apple_static_xcframework_import(
+    name = "UserMessagingPlatform",
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["Google-Mobile-Ads-SDK/UserMessagingPlatform.xcframework/**"]),
+)
+
+#
+# GoogleSignIn
+#
+
+apple_static_xcframework_import(
+    name = "GoogleSignIn",
+    data = [":GoogleSignInBundle"],
+    visibility = ["//visibility:public"],
+    xcframework_imports = glob(["GoogleSignIn/GoogleSignIn.xcframework/**"]),
+    deps = [
+        ":AppAuth",
+        ":GTMAppAuth",
+        ":GTMSessionFetcher",
+    ],
+)
+
+apple_bundle_import(
+    name = "GoogleSignInBundle",
+    bundle_imports = glob(["GoogleSignIn/Resources/GoogleSignIn.bundle/**"]),
+    visibility = ["//visibility:public"],
+)
