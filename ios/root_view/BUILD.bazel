@@ -9,8 +9,16 @@ swift_library(
     deps = [],
 )
 
+swift_library(
+    name = "root_view_tests_library",
+    testonly = True,
+    srcs = glob(["test/**/*.swift"]),
+    module_name = "ios_root_view_tests",
+    deps = [":root_view"],
+)
+
 ios_unit_test(
     name = "root_view_tests",
-    deps = [":root_view"],
-    minimum_os_version = "17.0"
+    minimum_os_version = "16.4",
+    deps = [":root_view_tests_library"],
 )
