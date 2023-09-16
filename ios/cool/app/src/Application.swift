@@ -1,5 +1,5 @@
 import FirebaseAnalyticsSwift
-import ios_root_view
+import ios_cool_root_view
 import SwiftUI
 
 @main struct Application: App {

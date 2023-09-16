@@ -3,6 +3,6 @@ load("@//tools/bazel_support:apple.bzl", "dbx_apple_library")
 dbx_apple_library(
     name = "profile",
     srcs = glob(["src/**/*.swift"]),
-    visibility = ["//ios/root_view:__subpackages__"],
+    visibility = ["//ios/cool/root_view:__subpackages__"],
     deps = [],
 )

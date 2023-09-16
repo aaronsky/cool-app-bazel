@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import ios_root_view
+@testable import ios_cool_root_view
 
 @MainActor
 class AppViewTests: XCTestCase {

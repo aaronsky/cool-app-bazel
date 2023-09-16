@@ -4,8 +4,8 @@ load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
 dbx_apple_library(
     name = "root_view",
     srcs = glob(["src/**/*.swift"]),
-    module_name = "ios_root_view",
-    visibility = ["//ios/app:__subpackages__"],
+    module_name = "ios_cool_root_view",
+    visibility = ["//ios/cool/app:__subpackages__"],
     deps = [],
 )
 
@@ -13,7 +13,7 @@ dbx_apple_library(
     name = "root_view_tests_library",
     testonly = True,
     srcs = glob(["test/**/*.swift"]),
-    module_name = "ios_root_view_tests",
+    module_name = "ios_cool_root_view_tests",
     deps = [":root_view"],
 )
 

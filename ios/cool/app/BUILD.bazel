@@ -10,7 +10,7 @@ apple_bundle_version(
 )
 
 ios_application(
-    name = "CoolApp",
+    name = "app",
     app_icons = glob(["src/Assets.xcassets/AppIcon.appiconset/**"]),
     bundle_id = "com.sky.CoolApp",
     bundle_name = "CoolApp",
@@ -29,32 +29,32 @@ ios_application(
     visibility = [
         "@rules_xcodeproj//xcodeproj:generated",
     ],
-    deps = [":CoolAppLib"],
+    deps = [":app_lib"],
 )
 
 dbx_apple_library(
-    name = "CoolAppLib",
+    name = "app_lib",
     srcs = glob(["src/**/*.swift"]),
     module_name = "CoolApp",
     deps = [
-        "//ios/root_view",
+        "//ios/cool/root_view",
         "@firebase//:FirebaseAnalyticsSwift",
     ],
 )
 
 dbx_apple_library(
-    name = "CoolAppLibTestsLib",
+    name = "app_lib_tests_lib",
     testonly = True,
     srcs = glob(["test/**/*.swift"]),
     module_name = "CoolAppLibTests",
-    deps = [":CoolAppLib"],
+    deps = [":app_lib"],
 )
 
 ios_unit_test(
-    name = "CoolAppLibTests",
+    name = "app_lib_tests",
     minimum_os_version = "16.4",
     visibility = ["@rules_xcodeproj//xcodeproj:generated"],
-    deps = [":CoolAppLibTestsLib"],
+    deps = [":app_lib_tests_lib"],
 )
 
 xcodeproj(
@@ -63,7 +63,7 @@ xcodeproj(
     project_name = "CoolApp",
     tags = ["manual"],
     top_level_targets = [
-        ":CoolApp",
-        ":CoolAppLibTests",
+        ":app",
+        ":app_lib_tests",
     ],
 )
