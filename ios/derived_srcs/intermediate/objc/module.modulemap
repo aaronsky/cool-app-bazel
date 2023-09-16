@@ -1,0 +1,3 @@
+module ObjcIntermediate {
+  header "ObjcIntermediate.h"
+}

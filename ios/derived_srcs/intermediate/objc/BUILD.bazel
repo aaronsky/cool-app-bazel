@@ -1,0 +1,8 @@
+objc_library(
+    name = "objc",
+    srcs = ["ObjcIntermediate.m"],
+    hdrs = ["ObjcIntermediate.h"],
+    module_map = "module.modulemap",
+    visibility = ["//ios/derived_srcs:__subpackages__"],
+    deps = ["//ios/derived_srcs/intermediate/swift"],
+)

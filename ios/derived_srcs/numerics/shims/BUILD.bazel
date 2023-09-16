@@ -1,0 +1,7 @@
+objc_library(
+    name = "shims",
+    srcs = ["_NumericsShims.c"],
+    hdrs = ["_NumericsShims.h"],
+    module_name = "_NumericsShims",
+    visibility = ["//ios/derived_srcs:__subpackages__"],
+)

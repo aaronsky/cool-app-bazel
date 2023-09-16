@@ -1,0 +1,11 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+
+swift_library(
+    name = "swift",
+    srcs = ["IntermediateModule.swift"],
+    generated_header_name = "IntermediateModule-Swift.h",
+    generates_header = True,
+    module_name = "IntermediateModule",
+    visibility = ["//ios/derived_srcs:__subpackages__"],
+    deps = ["//ios/derived_srcs/numerics/real"],
+)

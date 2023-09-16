@@ -1,0 +1,45 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcodeproj")
+
+apple_bundle_version(
+    name = "version",
+    build_version = "1",
+    short_version_string = "1.0",
+)
+
+ios_application(
+    name = "app",
+    app_icons = glob(["Assets.xcassets/AppIcon.appiconset/**"]),
+    bundle_id = "com.sky.SwiftHeaderDerivedSources",
+    bundle_name = "SwiftHeaderDerivedSources",
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["Info.plist"],
+    minimum_os_version = "16.4",
+    resources = glob(
+        ["Assets.xcassets/**"],
+        exclude = ["Assets.xcassets/AppIcon.appiconset/**"],
+    ),
+    version = ":version",
+    visibility = ["@rules_xcodeproj//xcodeproj:generated"],
+    deps = [":app_lib"],
+)
+
+swift_library(
+    name = "app_lib",
+    srcs = glob(["*.swift"]),
+    module_name = "SwiftHeaderDerivedSources",
+    deps = ["//ios/derived_srcs/intermediate/objc"],
+)
+
+xcodeproj(
+    name = "xcodeproj",
+    build_mode = "bazel",
+    project_name = "SwiftHeaderDerivedSources",
+    tags = ["manual"],
+    top_level_targets = [":app"],
+)
