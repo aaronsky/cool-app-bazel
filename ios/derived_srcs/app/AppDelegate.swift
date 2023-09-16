@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  SwiftHeaderDerivedSources
-//
-//  Created by jforbes on 6/9/23.
-//
-
 import UIKit
 import ObjcIntermediate
 

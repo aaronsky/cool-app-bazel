@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  SwiftHeaderDerivedSources
-//
-//  Created by jforbes on 6/9/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
