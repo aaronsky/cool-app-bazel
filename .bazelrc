@@ -1,3 +1,4 @@
+# shellcheck disable=all
 common --enable_bzlmod
 
 # Use a user.bazelrc if it exists

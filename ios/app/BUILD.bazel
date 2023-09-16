@@ -1,4 +1,4 @@
-load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_test")
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcodeproj")
@@ -29,13 +29,11 @@ ios_application(
     visibility = [
         "@rules_xcodeproj//xcodeproj:generated",
     ],
-    deps = [
-        ":CoolAppLibrary",
-    ],
+    deps = [":CoolAppLib"],
 )
 
 swift_library(
-    name = "CoolAppLibrary",
+    name = "CoolAppLib",
     srcs = glob(["src/**/*.swift"]),
     module_name = "CoolApp",
     deps = [
@@ -44,9 +42,28 @@ swift_library(
     ],
 )
 
+swift_library(
+    name = "CoolAppLibTestsLib",
+    testonly = True,
+    srcs = glob(["test/**/*.swift"]),
+    module_name = "CoolAppLibTests",
+    deps = [":CoolAppLib"],
+)
+
+ios_unit_test(
+    name = "CoolAppLibTests",
+    minimum_os_version = "16.4",
+    visibility = ["@rules_xcodeproj//xcodeproj:generated"],
+    deps = [":CoolAppLibTestsLib"],
+)
+
 xcodeproj(
     name = "xcodeproj",
     build_mode = "bazel",
     project_name = "CoolApp",
-    top_level_targets = ["CoolApp"],
+    tags = ["manual"],
+    top_level_targets = [
+        ":CoolApp",
+        ":CoolAppLibTests",
+    ],
 )
