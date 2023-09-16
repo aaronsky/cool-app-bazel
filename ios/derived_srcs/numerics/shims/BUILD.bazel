@@ -1,4 +1,6 @@
-objc_library(
+load("@//tools/bazel_support:apple.bzl", "dbx_apple_library")
+
+dbx_apple_library(
     name = "shims",
     srcs = ["_NumericsShims.c"],
     hdrs = ["_NumericsShims.h"],

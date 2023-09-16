@@ -1,6 +1,6 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@//tools/bazel_support:apple.bzl", "dbx_apple_library")
 
-swift_library(
+dbx_apple_library(
     name = "swift",
     srcs = ["IntermediateModule.swift"],
     generated_header_name = "IntermediateModule-Swift.h",

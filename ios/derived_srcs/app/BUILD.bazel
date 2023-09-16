@@ -1,6 +1,6 @@
+load("@//tools/bazel_support:apple.bzl", "dbx_apple_library")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcodeproj")
 
 apple_bundle_version(
@@ -29,7 +29,7 @@ ios_application(
     deps = [":app_lib"],
 )
 
-swift_library(
+dbx_apple_library(
     name = "app_lib",
     srcs = glob(["*.swift"]),
     module_name = "SwiftHeaderDerivedSources",

@@ -1,5 +1,19 @@
 # shellcheck disable=all
 common --enable_bzlmod
 
+build:ios --apple_platform_type=ios
+build:ios_armv7 --config=ios
+build:ios_armv7 --cpu=ios_armv7
+build:ios_arm64 --config=ios
+build:ios_arm64 --cpu=ios_arm64
+build:ios_arm64e --config=ios
+build:ios_arm64e --cpu=ios_arm64e
+build:ios_sim_arm64 --config=ios
+build:ios_sim_arm64 --cpu=ios_sim_arm64
+build:ios_x86_64 --config=ios
+build:ios_x86_64 --cpu=ios_x86_64
+build:ios_fat --config=ios
+build:ios_fat --ios_multi_cpus=armv7,arm64,i386,x86_64
+
 # Use a user.bazelrc if it exists
 try-import %workspace%/user.bazelrc
